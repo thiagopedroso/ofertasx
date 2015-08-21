@@ -1,0 +1,15 @@
+parameters:
+  db.class: Ofertas\Db\Db
+ 
+  database.db1.dsn: mysql:host=127.0.0.1;port=3306;dbname=test_e_symfony
+  database.db1.username: test_e_master1
+  database.db1.password: xLhmBiOWTr
+
+ 
+services:
+  db1:
+    class: %db.class%
+    calls:
+      - [setDsn, [%database.db1.dsn%]]
+      - [setUsername, [%database.db1.username%]]
+      - [setPassword, [%database.db1.password%]]

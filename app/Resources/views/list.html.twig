@@ -1,0 +1,173 @@
+{% extends 'ofertas_base.html.twig' %}
+{% block body %}
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">OfertasX</a>
+    
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="row center" align="center">
+
+    <form class="col s12 form_search" action="/search" method="post">
+    <div class="row center">
+
+        <div class="input-field col s4"> 
+		
+		<ul id='dropdown_categorias' class='dropdown-content' style='width:100%'>
+		 <li value="0" label="Escolha a Categoria"><a href="javascript://">Escolha a Categoria</a></li>
+    <template each="true">
+    <li value="${id_categoria}" label="${label_categoria}"><a href="javascript://">${label_categoria}</a></li>
+    </template>
+  </ul>
+  
+  <div class="select-wrapper">
+  <span class="caret">▼</span>
+ <input type="hidden" id="dropdown_categorias_id" value="0"> 
+  <input type="text" class="categoria_ofertas select-dropdown" readonly="true" data-activates="dropdown_categorias" value="Escolha a Categoria">
+        </div> 
+		
+        </div>
+        <div class="input-field col s6">
+         
+          <input id="ofertasx_q" "ofertasx_q" type="text" class="validate">
+          <label for="ofertasx_q">Digite o lugar, nome do produto e etc</label>
+        </div>
+         <div class="input-field col s2">
+        <a class="waves-effect waves-light btn-flat light-blue white-text ofertas_btn_search">buscar</a></div>
+</div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m3">
+          <div class="icon-block">
+        
+            <h6 class="center">Filtre os resultados</h6>
+
+            <form action="#">
+			<div>
+            <template each="true">
+    <p>
+      <input type="checkbox" id="test5" />
+      <label for="test5">Red</label>
+    </p>
+    
+    </template>
+	</div>
+	<p class="range-field">
+	<label for="filter_kms">Distância de você <span id="kms_label" class="right">50 Km</span></label>
+      <input type="range" id="filter_kms" min="0" max="100" />
+    </p>
+  </form>
+          </div>
+        </div>
+
+  
+
+        <div class="col s12 m9">
+		<div style="height: 35px;">
+		<div class="left">
+		Ordernar por: 
+		<a id="btn_sort_nome" href="javascript://">Nome</a> ou
+		<a id="btn_sort_descon" href="javascript://">Desconto</a>
+		</div>
+		<div class="right">
+		<div class="col s3">
+		Mostrar:
+		</div>
+		 <div class="col s6">
+    <select id="_total_pagina" style="display:block; margin-top: -10px; width:130px;">
+      <option value="5" selected>5 por página</option>
+      <option value="10">10 por página</option>
+      <option value="15">15 por página</option>
+      <option value="25">25 por página</option>
+    </select>
+</div>
+		<input type="hidden" id="_num_pagina" value="1">
+	</div>
+	</div>
+	
+          <div>
+            <ul class="collection" id="ofertasx_list" style="width:100%;">
+            <template each="true">
+    <li class="collection-item avatar">
+      <img src="${oferta_img}" alt="" class="circle">
+      <span class="title">${oferta_nome}</span>
+      <p>
+         <div>${oferta_categoria}</div>
+		 <div>${oferta_km} Km</div>
+      </p>
+      <span class="badge orange secondary-content white-text">${oferta_desconto}% OFF</span>
+    </li>
+    </template>
+    </ul>
+          </div>
+		  <div class="right">
+		<button class="btn-flat grey lighten-5 paginador anterior" disabled>&lsaquo; Anterior</button>
+    <span class="paginador numeracao"></span>
+    <button class="btn-flat grey lighten-5 paginador proximo" disabled>Próximo &rsaquo;</button>
+	</div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">OfertaX</h5>
+          <p class="grey-text text-lighten-4">Somente no OfertaX você tem as melhores ofertas em um único site. Aproveite!</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Institucional</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Sobre o Ofertax</a></li>
+            <li><a class="white-text" href="#!">Política de Privacidade</a></li>
+            <li><a class="white-text" href="#!">Fale Conosco</a></li>
+            <li><a class="white-text" href="#!">Termos de Uso</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Social Media</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">Twitter</a></li>
+            <li><a class="white-text" href="#!">Google+</a></li>
+            <li><a class="white-text" href="#!">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+       <a class="orange-text text-lighten-3" href="#">OfertaX - Todos os Direitos Reservados</a>
+      </div>
+    </div>
+  </footer>
+<input type="hidden" id="lat">
+<input type="hidden" id="lng">
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ asset('bundles/Ofertas/materialize/js/materialize.js') }}"></script>
+  <script src="{{ asset('bundles/Ofertas/scripts/init.js') }}"></script>
+  <script src="{{ asset('bundles/Ofertas/scripts/tm.js') }}"></script>
+
+{% endblock %}

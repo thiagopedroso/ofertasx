@@ -1,0 +1,16 @@
+listOfertas:
+  pattern: /
+  defaults:
+    _controller: "Ofertas\Controller\IndexController::index"
+listOfertasCategoriasJson:
+  pattern: /list_categorias
+  defaults:
+    _controller: "Ofertas\Controller\JsonController::listaCategorias"
+listOfertasJson:
+  pattern: /list_ofertas
+  defaults:
+    _controller: "Ofertas\Controller\JsonController::listaOfertas"
+filtersJson:
+  pattern: /get_filters
+  defaults:
+    _controller: "Ofertas\Controller\JsonController::get_filters"
